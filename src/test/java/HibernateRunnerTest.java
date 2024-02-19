@@ -31,12 +31,12 @@ class HibernateRunnerTest {
             session.beginTransaction();
 
             var company = Company.builder()
-                    .name("Sberbank")
+                    .name("Sber")
                     .build();
             session.saveOrUpdate(company);
 
             var programmer = Programmer.builder()
-                    .username("saha@mail.ru")
+                    .username("ssaha@mail.ru")
                     .personalInfo(PersonalInfo.builder()
                             .firstName("Marat")
                             .lastName("Akhujon")
@@ -49,7 +49,7 @@ class HibernateRunnerTest {
             session.save(programmer);
 
             var manager = Manager.builder()
-                    .username("maha@mail.ru")
+                    .username("smaha@mail.ru")
                     .personalInfo(PersonalInfo.builder()
                             .firstName("Iluya")
                             .lastName("Kisha")
