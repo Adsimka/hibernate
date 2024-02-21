@@ -1,10 +1,7 @@
 package entity;
 
 import domain.Role;
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Set;
@@ -14,7 +11,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@DiscriminatorValue("programmer")
+@PrimaryKeyJoinColumn(name = "id")
 public class Programmer extends User {
     @Enumerated(EnumType.STRING)
     private Language language;

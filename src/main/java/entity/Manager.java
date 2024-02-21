@@ -3,6 +3,7 @@ package entity;
 import domain.Role;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import lombok.*;
 
 import java.util.Set;
@@ -12,7 +13,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@DiscriminatorValue("manager")
+@PrimaryKeyJoinColumn(name = "id")
 public class Manager extends User {
 
     private String projectName;

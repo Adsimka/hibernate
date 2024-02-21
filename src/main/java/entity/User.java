@@ -13,6 +13,7 @@ import org.hibernate.persister.entity.EntityPersister;
 import java.util.HashSet;
 import java.util.Set;
 
+@NamedQuery(name = "findUserByName", query = "select u from User u join u.company c where u.username = :username and c.name = :companyName")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,8 +21,7 @@ import java.util.Set;
 @EqualsAndHashCode(of = "username")
 @Table(name = "users")
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "type")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class User implements Comparable<User>, BaseEntity<Long> {
 
     @Id
