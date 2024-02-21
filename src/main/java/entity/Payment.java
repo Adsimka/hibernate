@@ -20,7 +20,7 @@ public class Payment {
     private Long id;
 
     @Column(nullable = false)
-    private Long price;
+    private Long amount;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "receiver_id")
