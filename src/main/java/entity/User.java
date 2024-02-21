@@ -10,7 +10,9 @@ import org.hibernate.engine.internal.StatefulPersistenceContext;
 import org.hibernate.engine.spi.PersistenceContext;
 import org.hibernate.persister.entity.EntityPersister;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @NamedQuery(name = "findUserByName", query = "select u from User u join u.company c where u.username = :username and c.name = :companyName")
@@ -52,6 +54,10 @@ public abstract class User implements Comparable<User>, BaseEntity<Long> {
 //    @Builder.Default
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<UsersChat> usersChats = new HashSet<>();
+
+    @Builder.Default
+    @OneToMany(mappedBy = "receivers")
+    private List<Payment> paymentList = new ArrayList<>();
 
     @Override
     public int compareTo(User o) {

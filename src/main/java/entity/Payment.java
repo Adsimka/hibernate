@@ -1,0 +1,28 @@
+package entity;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
+
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class Payment {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
+    private Long price;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "receiver_id")
+    private User receivers;
+}
