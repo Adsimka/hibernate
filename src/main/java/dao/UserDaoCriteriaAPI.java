@@ -4,13 +4,9 @@ import dto.CompanyDto;
 import entity.Company;
 import entity.Payment;
 import entity.User;
-import jakarta.persistence.criteria.MapJoin;
 import jakarta.persistence.criteria.Predicate;
 import org.hibernate.Session;
-import org.hibernate.query.criteria.HibernateCriteriaBuilder;
-import org.hibernate.query.criteria.JpaCriteriaQuery;
 import org.hibernate.query.criteria.JpaJoin;
-import org.hibernate.query.criteria.JpaRoot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -122,14 +118,6 @@ public class UserDaoCriteriaAPI {
     }
 
     public List<Object[]> isItPossible(Session session) {
-//        return session.createQuery("select c.users, avg(p.amount) from Company c " +
-//                        "join c.users u " +
-//                        "join u.paymentList p " +
-//                        "group by c.users " +
-//                        "having avg(p.amount) > (select avg(p.amount) " +
-//                        "from Payment p)", Object[].class)
-//                .list();
-//
         var cb = session.getCriteriaBuilder();
         var criteria = cb.createQuery(Object[].class);
 
