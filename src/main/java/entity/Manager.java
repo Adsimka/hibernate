@@ -1,11 +1,11 @@
 package entity;
 
 import domain.Role;
-import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import lombok.*;
 
+import java.util.List;
 import java.util.Set;
 
 @EqualsAndHashCode(callSuper = true)
@@ -20,8 +20,8 @@ public class Manager extends User {
 
     @Builder
     public Manager(Long id, Profile profile, String username, PersonalInfo personalInfo,
-                   Role role, Company company, Set<UsersChat> usersChats, String projectName) {
-        super(id, profile, username, personalInfo, role, company, usersChats);
+                   Role role, Company company, Set<UsersChat> usersChats, String projectName, List<Payment> paymentList) {
+        super(id, profile, username, personalInfo, role, company, usersChats, paymentList);
         this.projectName = projectName;
     }
 }

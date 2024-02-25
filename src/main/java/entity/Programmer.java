@@ -4,6 +4,7 @@ import domain.Role;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
 import java.util.Set;
 
 @EqualsAndHashCode(callSuper = true)
@@ -17,8 +18,8 @@ public class Programmer extends User {
     private Language language;
 
     @Builder
-    public Programmer(Long id, Profile profile, String username, PersonalInfo personalInfo, Role role, Company company, Set<UsersChat> usersChats, Language language) {
-        super(id, profile, username, personalInfo, role, company, usersChats);
+    public Programmer(Long id, Profile profile, String username, PersonalInfo personalInfo, Role role, Company company, Set<UsersChat> usersChats, Language language, List<Payment> payment) {
+        super(id, profile, username, personalInfo, role, company, usersChats, payment);
         this.language = language;
     }
 }

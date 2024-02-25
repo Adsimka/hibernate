@@ -1,6 +1,5 @@
 import entity.User;
 import jakarta.persistence.FlushModeType;
-import org.hibernate.FetchMode;
 import org.hibernate.query.Query;
 import org.junit.jupiter.api.Test;
 import util.HibernateUtil;
@@ -109,7 +108,8 @@ public class HibernateQLTest {
             session.beginTransaction();
 
             Query query = session.createQuery("select u from User u", User.class);
-            
+
+            session.beginTransaction();
         }
     }
 
