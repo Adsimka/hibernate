@@ -35,7 +35,7 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = "company")
+@ToString(exclude = "paymentList")
 @EqualsAndHashCode(exclude = "paymentList")
 @Table(name = "users")
 @Entity

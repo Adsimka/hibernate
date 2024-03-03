@@ -6,8 +6,6 @@ import lombok.experimental.UtilityClass;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import org.testcontainers.containers.PostgreSQLContainer;
-
 @UtilityClass
 public class HibernateUtil {
 

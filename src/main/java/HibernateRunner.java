@@ -4,6 +4,7 @@ import entity.Company;
 import entity.Payment;
 import entity.PersonalInfo;
 import entity.User;
+import jakarta.persistence.LockModeType;
 import util.HibernateUtil;
 
 import java.sql.SQLException;
@@ -12,11 +13,81 @@ import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
-import static util.HibernateUtil.buildSessionFactory;
-
 
 public class HibernateRunner {
     public static void main(String[] args) throws SQLException {
+        solutionLastWinCommit();
+    }
+
+    private static void getPaymentList() {
+        try(var sessionFactory = HibernateUtil.buildSessionFactory();
+            var session = sessionFactory.openSession()) {
+            session.beginTransaction();
+
+            var user = session.find(User.class, 1L);
+            user.getPaymentList().forEach(System.out::println);
+
+
+            session.getTransaction().commit();
+        }
+    }
+
+    private static void insertPayment() {
+        try(var sessionFactory = HibernateUtil.buildSessionFactory();
+            var session = sessionFactory.openSession()) {
+            session.beginTransaction();
+
+            User user = User.builder()
+                    .username("sah02@mail.ru")
+                    .build();
+
+            Payment payment = Payment.builder()
+                    .amount(10000L)
+                    .receivers(user)
+                    .build();
+
+            List<Payment> paymentList = new ArrayList<>();
+            paymentList.add(payment);
+
+            user.setPaymentList(paymentList);
+
+            session.save(user);
+            session.save(payment);
+
+
+            session.getTransaction().commit();
+        }
+    }
+
+    private static void solutionLastWinCommit() {
+
+    }
+
+    private static void checkFirstWinCommit() {
+        try(var sessionFactory = HibernateUtil.buildSessionFactory();
+        var session = sessionFactory.openSession();
+        var session1 = sessionFactory.openSession()) {
+
+            session.beginTransaction();
+            session1.beginTransaction();
+
+            Payment payment = session.find(Payment.class, 1L, LockModeType.OPTIMISTIC);
+            payment.setAmount(payment.getAmount() + 20L);
+
+            Payment payment1 = session1.find(Payment.class, 1L, LockModeType.OPTIMISTIC);
+            payment1.setAmount(payment1.getAmount() + 10L);
+
+            session.flush();
+            Payment payment2 = session.find(Payment.class, 1L);
+            System.out.println(payment2);
+            System.out.println("---------------------------------------------");
+
+            session.getTransaction().commit();
+            session1.getTransaction().commit();
+        }
+    }
+
+    private static void insertUserWithPayments() {
         try (var sessionFactory = HibernateUtil.buildSessionFactory();
              var session = sessionFactory.openSession()) {
             session.beginTransaction();
@@ -49,7 +120,6 @@ public class HibernateRunner {
 
             session.getTransaction().commit();
         }
-
     }
 
     private static void insertUser() {
