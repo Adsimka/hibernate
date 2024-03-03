@@ -16,7 +16,31 @@ import java.util.List;
 
 public class HibernateRunner {
     public static void main(String[] args) throws SQLException {
-        solutionLastWinCommit();
+        checkFirstWinCommit();
+    }
+
+    private static void checkFirstWinCommit() {
+        try(var sessionFactory = HibernateUtil.buildSessionFactory();
+            var session = sessionFactory.openSession();
+            var session1 = sessionFactory.openSession()) {
+
+            session.beginTransaction();
+            session1.beginTransaction();
+
+            Payment payment = session.find(Payment.class, 1L);
+            payment.setAmount(payment.getAmount() + 30L);
+
+            Payment payment1 = session1.find(Payment.class, 1L);
+            payment1.setAmount(payment1.getAmount() + 20L);
+
+            session.flush();
+            Payment payment2 = session.find(Payment.class, 1L);
+            System.out.println(payment2);
+            System.out.println("---------------------------------------------");
+
+            session.getTransaction().commit();
+            session1.getTransaction().commit();
+        }
     }
 
     private static void getPaymentList() {
@@ -56,34 +80,6 @@ public class HibernateRunner {
 
 
             session.getTransaction().commit();
-        }
-    }
-
-    private static void solutionLastWinCommit() {
-
-    }
-
-    private static void checkFirstWinCommit() {
-        try(var sessionFactory = HibernateUtil.buildSessionFactory();
-        var session = sessionFactory.openSession();
-        var session1 = sessionFactory.openSession()) {
-
-            session.beginTransaction();
-            session1.beginTransaction();
-
-            Payment payment = session.find(Payment.class, 1L, LockModeType.OPTIMISTIC);
-            payment.setAmount(payment.getAmount() + 20L);
-
-            Payment payment1 = session1.find(Payment.class, 1L, LockModeType.OPTIMISTIC);
-            payment1.setAmount(payment1.getAmount() + 10L);
-
-            session.flush();
-            Payment payment2 = session.find(Payment.class, 1L);
-            System.out.println(payment2);
-            System.out.println("---------------------------------------------");
-
-            session.getTransaction().commit();
-            session1.getTransaction().commit();
         }
     }
 

@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.OptimisticLockType;
 import org.hibernate.annotations.OptimisticLocking;
 
@@ -13,15 +14,16 @@ import org.hibernate.annotations.OptimisticLocking;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@OptimisticLocking(type = OptimisticLockType.VERSION)
+@OptimisticLocking(type = OptimisticLockType.DIRTY)
+@DynamicUpdate
 public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Version
-    private Long version;
+//    @Version
+//    private Long version;
 
     @Column(nullable = false)
     private Long amount;
