@@ -1,125 +1,140 @@
-import domain.BirthDate;
-import entity.*;
+import entity.Company;
+import entity.LocaleInfo;
+import entity.Profile;
+import entity.User;
 import lombok.Cleanup;
 import org.junit.jupiter.api.Test;
 import util.HibernateUtil;
 import util.HibernateUtilTest;
 
-import java.time.LocalDate;
 import java.util.Map;
-
-import static domain.Role.ADMIN;
-import static entity.Language.JAVA;
 
 class HibernateRunnerTest {
 
+
     @Test
-    void buildJoinedTableForSubclassUser() {
-        try (var sessionFactory = HibernateUtilTest.buildSessionFactory();
-             var session = sessionFactory.openSession()) {
+    void checkInsertUser() {
+        try (var sessionFactory = HibernateUtil.buildSessionFactory();
+        var session = sessionFactory.openSession()) {
             session.beginTransaction();
 
-            var company = Company.builder()
-                    .name("Sber")
-                    .build();
-            session.saveOrUpdate(company);
+            session.enableFetchProfile("withCompanyAndPayments");
 
-            var programmer = Programmer.builder()
-                    .username("ssaha@mail.ru")
-                    .personalInfo(PersonalInfo.builder()
-                            .firstName("Marat")
-                            .lastName("Akhujon")
-                            .birthday(new BirthDate(LocalDate.of(2003, 02, 16)))
-                            .build())
-                    .role(ADMIN)
-                    .company(company)
-                    .language(JAVA)
-                    .build();
-            session.save(programmer);
-
-            var manager = Manager.builder()
-                    .username("smaha@mail.ru")
-                    .personalInfo(PersonalInfo.builder()
-                            .firstName("Iluya")
-                            .lastName("Kisha")
-                            .birthday(new BirthDate(LocalDate.of(2007, 07, 21)))
-                            .build())
-                    .role(ADMIN)
-                    .company(company)
-                    .projectName("Create landing paje")
-                    .build();
-            session.save(manager);
-
-            session.flush();
-
-            var programme1 = session.get(Programmer.class, 1L);
-            var manager1 = session.get(Manager.class, 2L);
-
-            System.out.println("------------------------/////-------------------------");
-
-            System.out.println(programme1);
-            System.out.println(manager1);
-
-            System.out.println("------------------------/////-------------------------");
+            var user = session.get(User.class, 1L);
+            System.out.println(user.getCompany());
+//            System.out.println(user.getPaymentList());
 
             session.getTransaction().commit();
         }
-
     }
 
-    @Test
-    void buildSingleTableForSubclassUser() {
-        try (var sessionFactory = HibernateUtilTest.buildSessionFactory();
-             var session = sessionFactory.openSession()) {
-            session.beginTransaction();
+//    @Test
+//    void buildJoinedTableForSubclassUser() {
+//        try (var sessionFactory = HibernateUtilTest.buildSessionFactory();
+//             var session = sessionFactory.openSession()) {
+//            session.beginTransaction();
+//
+//            var company = Company.builder()
+//                    .name("Aaaaas")
+//                    .build();
+//            session.saveOrUpdate(company);
+//
+//            var programmer = Programmer.builder()
+//                    .username("ssaha@mail.ru")
+//                    .personalInfo(PersonalInfo.builder()
+//                            .firstName("Marat")
+//                            .lastName("Akhujon")
+//                            .birthday(new BirthDate(LocalDate.of(2003, 02, 16)))
+//                            .build())
+//                    .role(ADMIN)
+//                    .company(company)
+//                    .language(JAVA)
+//                    .build();
+//            session.save(programmer);
+//
+//            var manager = Manager.builder()
+//                    .username("smaha@mail.ru")
+//                    .personalInfo(PersonalInfo.builder()
+//                            .firstName("Iluya")
+//                            .lastName("Kisha")
+//                            .birthday(new BirthDate(LocalDate.of(2007, 07, 21)))
+//                            .build())
+//                    .role(ADMIN)
+//                    .company(company)
+//                    .projectName("Create landing paje")
+//                    .build();
+//            session.save(manager);
+//
+//            session.flush();
+//
+//            var programme1 = session.get(Programmer.class, 1L);
+//            var manager1 = session.get(Manager.class, 2L);
+//
+//            System.out.println("------------------------/////-------------------------");
+//
+//            System.out.println(programme1);
+//            System.out.println(manager1);
+//
+//            System.out.println("------------------------/////-------------------------");
+//
+//            session.getTransaction().commit();
+//        }
+//
+//    }
 
-            var company = Company.builder()
-                    .name("Sber")
-                    .build();
-            session.saveOrUpdate(company);
-
-            var programmer = Programmer.builder()
-                    .username("ssaha@mail.ru")
-                    .personalInfo(PersonalInfo.builder()
-                            .firstName("Marat")
-                            .lastName("Akhujon")
-                            .birthday(new BirthDate(LocalDate.of(2003, 02, 16)))
-                            .build())
-                    .role(ADMIN)
-                    .company(company)
-                    .language(JAVA)
-                    .build();
-            session.save(programmer);
-
-            var manager = Manager.builder()
-                    .username("smaha@mail.ru")
-                    .personalInfo(PersonalInfo.builder()
-                            .firstName("Iluya")
-                            .lastName("Kisha")
-                            .birthday(new BirthDate(LocalDate.of(2007, 07, 21)))
-                            .build())
-                    .role(ADMIN)
-                    .company(company)
-                    .projectName("Create landing paje")
-                    .build();
-            session.save(manager);
-
-            session.flush();
-
-            var programme1 = session.get(Programmer.class, 1L);
-            var manager1 = session.get(Manager.class, 2L);
-
-            System.out.println("------------------------/////-------------------------");
-
-            System.out.println(programme1);
-            System.out.println(manager1);
-
-            System.out.println("------------------------/////-------------------------");
-
-            session.getTransaction().commit();
-        }
-
-    }
+//    @Test
+//    void buildSingleTableForSubclassUser() {
+//        try (var sessionFactory = HibernateUtilTest.buildSessionFactory();
+//             var session = sessionFactory.openSession()) {
+//            session.beginTransaction();
+//
+//            var company = Company.builder()
+//                    .name("Sber")
+//                    .build();
+//            session.saveOrUpdate(company);
+//
+//            var programmer = Programmer.builder()
+//                    .username("ssaha@mail.ru")
+//                    .personalInfo(PersonalInfo.builder()
+//                            .firstName("Marat")
+//                            .lastName("Akhujon")
+//                            .birthday(new BirthDate(LocalDate.of(2003, 02, 16)))
+//                            .build())
+//                    .role(ADMIN)
+//                    .company(company)
+//                    .language(JAVA)
+//                    .build();
+//            session.save(programmer);
+//
+//            var manager = Manager.builder()
+//                    .username("smaha@mail.ru")
+//                    .personalInfo(PersonalInfo.builder()
+//                            .firstName("Iluya")
+//                            .lastName("Kisha")
+//                            .birthday(new BirthDate(LocalDate.of(2007, 07, 21)))
+//                            .build())
+//                    .role(ADMIN)
+//                    .company(company)
+//                    .projectName("Create landing paje")
+//                    .build();
+//            session.save(manager);
+//
+//            session.flush();
+//
+//            var programme1 = session.get(Programmer.class, 1L);
+//            var manager1 = session.get(Manager.class, 2L);
+//
+//            System.out.println("------------------------/////-------------------------");
+//
+//            System.out.println(programme1);
+//            System.out.println(manager1);
+//
+//            System.out.println("------------------------/////-------------------------");
+//
+//            session.getTransaction().commit();
+//        }
+//
+//    }
 
     @Test
     void checkTestContainers() {
