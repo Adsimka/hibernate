@@ -18,21 +18,22 @@ import java.util.*;
 public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
+    @Column(nullable = false, unique = true)
     private String name;
 
     @Builder.Default
-    @OneToMany(mappedBy = "company", orphanRemoval = true, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true)
     @MapKey(name = "username")
-    @OrderBy("username DESC")
-    private Map<String, User> users = new HashMap<>();
+    @SortNatural
+    private Map<String, User> users = new TreeMap<>();
 
     @Builder.Default
-    @CollectionTable(name = "company_locale", joinColumns = @JoinColumn(name = "company_id"))
     @ElementCollection
-    @Column(name = "description")
+    @CollectionTable(name = "company_locale", joinColumns = @JoinColumn(name = "company_id"))
     @MapKeyColumn(name = "lang")
+    @Column(name = "description")
     private Map<String, String> locales = new HashMap<>();
 
     public void addUser(User user) {

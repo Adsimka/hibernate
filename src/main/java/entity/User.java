@@ -1,22 +1,28 @@
 package entity;
 
-import domain.BirthDate;
 import domain.Role;
 import jakarta.persistence.*;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.NamedQuery;
-import jakarta.persistence.Table;
 import lombok.*;
-import org.hibernate.annotations.*;
-import org.hibernate.engine.internal.StatefulPersistenceContext;
-import org.hibernate.engine.spi.PersistenceContext;
-import org.hibernate.persister.entity.EntityPersister;
+import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.FetchProfile;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
+@NamedEntityGraph(
+        name = "withCompanyAndChat",
+        attributeNodes = {
+                @NamedAttributeNode(value = "company"),
+                @NamedAttributeNode(value = "usersChats", subgraph = "chats")
+        },
+        subgraphs = {
+                @NamedSubgraph(
+                        name = "chats",
+                        attributeNodes = @NamedAttributeNode("chat"))
+        }
+)
 @FetchProfile(name = "withCompanyAndPayments", fetchOverrides = {
         @FetchProfile.FetchOverride(
                 entity = User.class, association = "company", mode = FetchMode.JOIN
@@ -41,10 +47,12 @@ public class User implements Comparable<User> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @OneToOne(cascade = CascadeType.ALL,
-            mappedBy = "user")
-    private Profile profile;
+//
+//    @OneToOne(
+//            cascade = CascadeType.ALL,
+//            mappedBy = "user",
+//            fetch = FetchType.LAZY)
+//    private Profile profile;
 
     @Column(unique = true)
     private String username;
@@ -57,14 +65,12 @@ public class User implements Comparable<User> {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @ManyToOne(optional = false,
-            fetch = FetchType.LAZY,
-            cascade = CascadeType.PERSIST)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id")
 //    @Fetch(FetchMode.JOIN)
     private Company company;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user")
     private Set<UsersChat> usersChats = new HashSet<>();
 
     @OneToMany(mappedBy = "receivers")

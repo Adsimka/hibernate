@@ -2,7 +2,11 @@ import entity.Company;
 import entity.LocaleInfo;
 import entity.Profile;
 import entity.User;
+import jakarta.persistence.QueryHint;
 import lombok.Cleanup;
+import org.hibernate.graph.GraphSemantic;
+import org.hibernate.graph.RootGraph;
+import org.hibernate.graph.SubGraph;
 import org.junit.jupiter.api.Test;
 import util.HibernateUtil;
 import util.HibernateUtilTest;
@@ -11,6 +15,41 @@ import java.util.Map;
 
 class HibernateRunnerTest {
 
+    @Test
+    void checkEntityGraph() {
+        try (var sessionFactory = HibernateUtil.buildSessionFactory();
+             var session = sessionFactory.openSession()) {
+            session.beginTransaction();
+
+            RootGraph<User> userGraph = session.createEntityGraph(User.class);
+            userGraph.addAttributeNodes("company", "usersChats");
+            SubGraph<Object> usersChats = userGraph.addSubgraph("usersChats");
+            usersChats.addAttributeNodes("chat");
+
+//            var userGraph = session.getEntityGraph("withCompanyAndChat");
+
+            Map<String, Object> properties = Map.of(
+                    GraphSemantic.LOAD.getJpaHintName(), userGraph
+            );
+
+            User user = session.find(User.class, 1L, properties);
+
+            System.out.println(user.getCompany().getName());
+            System.out.println(user.getUsersChats().size());
+
+            var users = session.createQuery(
+                            "select u from User u " +
+                                    "where 1 = 1", User.class)
+                    .setHint(GraphSemantic.LOAD.getJpaHintName(), userGraph)
+                    .list();
+
+            users.forEach(u -> System.out.println(u.getCompany().getName()));
+            users.forEach(u -> System.out.println(u.getUsersChats().size()));
+
+
+            session.getTransaction().commit();
+        }
+    }
 
     @Test
     void checkInsertUser() {
