@@ -7,7 +7,6 @@ import lombok.experimental.SuperBuilder;
 import java.time.LocalDateTime;
 
 @Data
-@SuperBuilder
 @NoArgsConstructor
 @Entity
 @Table(name = "users_chat")
@@ -18,13 +17,6 @@ public class UsersChat extends AuditableEntity<Long> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public UsersChat(LocalDateTime createdTime, String createdBy, Long id, User user, Chat chat) {
-        super(createdTime, createdBy);
-        this.id = id;
-        this.user = user;
-        this.chat = chat;
-    }
-
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
     @ManyToOne(fetch = FetchType.LAZY)
@@ -33,10 +25,5 @@ public class UsersChat extends AuditableEntity<Long> {
     public void setUser(User user) {
         this.user = user;
         this.user.getUsersChats().add(this);
-    }
-
-    public void setChat(Chat chat) {
-        this.chat = chat;
-        this.chat.getUsersChats().add(this);
     }
 }

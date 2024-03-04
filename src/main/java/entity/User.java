@@ -70,9 +70,11 @@ public class User implements Comparable<User> {
 //    @Fetch(FetchMode.JOIN)
     private Company company;
 
+    @Builder.Default
     @OneToMany(mappedBy = "user")
     private Set<UsersChat> usersChats = new HashSet<>();
 
+    @Builder.Default
     @OneToMany(mappedBy = "receivers")
 //    @Fetch(FetchMode.SUBSELECT)
     private List<Payment> paymentList = new ArrayList<>();

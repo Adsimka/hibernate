@@ -2,24 +2,35 @@ package entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
+import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-@SuperBuilder
-@NoArgsConstructor
+@Getter
+@Setter
+@MappedSuperclass
 public abstract class AuditableEntity <T extends Serializable> implements BaseEntity<T> {
-    @Column(name = "created_time", unique = true, nullable = false)
-    private LocalDateTime createdTime;
 
-    @Column(name = "created_by", unique = true, nullable = false)
+    private LocalDateTime createdTime;
     private String createdBy;
 
+    private LocalDateTime updateTime;
+    private String updateBy;
 
-    protected AuditableEntity(LocalDateTime createdTime, String createdBy) {
-        this.createdTime = createdTime;
-        this.createdBy = createdBy;
+    @PrePersist
+    public void prePersist() {
+        setCreatedTime(LocalDateTime.now());
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        setUpdateTime(LocalDateTime.now());
     }
 }

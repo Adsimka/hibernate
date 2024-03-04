@@ -21,6 +21,7 @@
         <mapping class="entity.Chat"/>
         <mapping class="entity.UsersChat"/>
         <mapping class="entity.Payment"/>
+        <mapping class="entity.AuditableEntity"/>
 
     </session-factory>
 </hibernate-configuration>
