@@ -12,6 +12,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 public class HibernateRunner {
@@ -27,19 +28,19 @@ public class HibernateRunner {
             session.beginTransaction();
             session1.beginTransaction();
 
-            Payment payment = session.find(Payment.class, 1L);
+            Map<String, Object> properties = Map.of("javax.persistence.lock.timeout", 5000);
+            Payment payment = session.find(Payment.class, 1L, LockModeType.READ, properties);
             payment.setAmount(payment.getAmount() + 30L);
 
             Payment payment1 = session1.find(Payment.class, 1L);
             payment1.setAmount(payment1.getAmount() + 20L);
 
-            session.flush();
             Payment payment2 = session.find(Payment.class, 1L);
             System.out.println(payment2);
             System.out.println("---------------------------------------------");
 
-            session.getTransaction().commit();
             session1.getTransaction().commit();
+            session.getTransaction().commit();
         }
     }
 

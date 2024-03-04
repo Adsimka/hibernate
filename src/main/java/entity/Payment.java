@@ -14,16 +14,16 @@ import org.hibernate.annotations.OptimisticLocking;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@OptimisticLocking(type = OptimisticLockType.DIRTY)
-@DynamicUpdate
+//@OptimisticLocking(type = OptimisticLockType.VERSION)
+//@DynamicUpdate
 public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @Version
-//    private Long version;
+    @Version
+    private Long version;
 
     @Column(nullable = false)
     private Long amount;
