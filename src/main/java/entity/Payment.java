@@ -22,8 +22,8 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Version
-    private Long version;
+//    @Version
+//    private Long version;
 
     @Column(nullable = false)
     private Long amount;

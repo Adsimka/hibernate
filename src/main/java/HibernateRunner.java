@@ -17,7 +17,20 @@ import java.util.Map;
 
 public class HibernateRunner {
     public static void main(String[] args) throws SQLException {
-        checkFirstWinCommit();
+        readOnlyMode();
+    }
+
+    private static void readOnlyMode() {
+        try(var sessionFactory = HibernateUtil.buildSessionFactory();
+            var session = sessionFactory.openSession()) {
+            session.beginTransaction();
+            session.createNativeQuery("SET TRANSACTION READ ONLY;").executeUpdate();
+
+            var payment = session.find(Payment.class, 1L);
+            payment.setAmount(payment.getAmount() + 123L);
+
+            session.getTransaction().commit();
+        }
     }
 
     private static void checkFirstWinCommit() {
