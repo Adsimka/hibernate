@@ -17,9 +17,24 @@ import java.util.Map;
 
 public class HibernateRunner {
     public static void main(String[] args) throws SQLException {
-        readOnlyMode();
+        nonTransactionalDataAccess();
     }
 
+    private static void nonTransactionalDataAccess() {
+        try(var sessionFactory = HibernateUtil.buildSessionFactory();
+            var session = sessionFactory.openSession()) {
+
+            Payment payment1 = Payment.builder()
+                    .amount(2000L)
+                    .receivers(session.get(User.class, 1L))
+                    .build();
+
+            session.save(payment1);
+
+            var payment = session.find(Payment.class, 1L);
+            payment.setAmount(payment.getAmount() + 123L);
+        }
+    }
     private static void readOnlyMode() {
         try(var sessionFactory = HibernateUtil.buildSessionFactory();
             var session = sessionFactory.openSession()) {
