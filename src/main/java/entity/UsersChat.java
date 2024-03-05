@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Entity
 @Table(name = "users_chat")
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(exclude = "user")
 public class UsersChat extends AuditableEntity<Long> {
 
     @Id

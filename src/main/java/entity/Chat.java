@@ -23,6 +23,9 @@ public class Chat {
     private String name;
 
     @Builder.Default
+    private Long count = 0L;
+
+    @Builder.Default
     @OneToMany(mappedBy = "chat", cascade = CascadeType.ALL)
     private Set<UsersChat> usersChats = new HashSet<>();
 }

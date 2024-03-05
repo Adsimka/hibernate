@@ -36,7 +36,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(exclude = "paymentList")
-@EqualsAndHashCode(exclude = "paymentList")
+@EqualsAndHashCode(exclude = "usersChats")
 @Table(name = "users")
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
