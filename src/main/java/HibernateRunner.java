@@ -18,49 +18,8 @@ public class HibernateRunner {
             var session = sessionFactory.openSession()) {
             session.beginTransaction();
 
-            List<UsersChat> usersChats = new ArrayList<>();
-
-
-            Chat chat = Chat.builder()
-                    .name("Yoga")
-                    .build();
-
-            User user1 = User.builder()
-                    .username("hm@mail.ru")
-                    .build();
-
-            User user2 = User.builder()
-                    .username("nt@google.com")
-                    .build();
-
-            UsersChat usersChat1 = new UsersChat();
-            usersChat1.setUser(user1);
-            usersChat1.setChat(chat);
-
-            UsersChat userChat2 = new UsersChat();
-            userChat2.setUser(user2);
-            userChat2.setChat(chat);
-
-            usersChats.add(usersChat1);
-            usersChats.add(userChat2);
-
-            session.saveOrUpdate(user1);
-            session.saveOrUpdate(user2);
-            session.saveOrUpdate(chat);
-            session.save(usersChat1);
-            session.save(userChat2);
-
-            session.getTransaction().commit();
-        }
-    }
-
-    private static void updatePayment() {
-        try(var sessionFactory = HibernateUtil.buildSessionFactory();
-            var session = sessionFactory.openSession()) {
-            session.beginTransaction();
-
-            Payment payment = session.find(Payment.class, 1L);
-            payment.setAmount(payment.getAmount() - 90_000L);
+            User user = session.get(User.class, 1L);
+            session.remove(user);
 
             session.getTransaction().commit();
         }
@@ -163,7 +122,9 @@ public class HibernateRunner {
              var session = sessionFactory.openSession()) {
             session.beginTransaction();
 
-            User user = session.get(User.class, 1L);
+            User user = User.builder()
+                    .username("sahalysyk02@mail.ru")
+                    .build();
 
             List<Payment> paymentList = new ArrayList<>();
 
@@ -182,12 +143,12 @@ public class HibernateRunner {
 
             user.setPaymentList(paymentList);
 
-            session.saveOrUpdate(payment1);
-            session.saveOrUpdate(payment2);
+            session.save(user);
+
+            session.save(payment1);
+            session.save(payment2);
 
             user.setPaymentList(paymentList);
-
-            session.saveOrUpdate(user);
 
             session.getTransaction().commit();
         }

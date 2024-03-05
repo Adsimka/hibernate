@@ -2,6 +2,7 @@ package entity;
 
 import domain.Role;
 import jakarta.persistence.*;
+import listener.AuditTableListener;
 import lombok.*;
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.FetchMode;
