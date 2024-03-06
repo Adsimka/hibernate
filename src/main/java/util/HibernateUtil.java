@@ -22,21 +22,10 @@ public class HibernateUtil {
         Configuration configuration = buildConfiguration();
         configuration.configure();
 
-        var serviceRegistry = new StandardServiceRegistryBuilder()
-                .applySettings(configuration.getProperties())
-                .build();
+        var sessionFactory = configuration.buildSessionFactory();
+        registryListener(sessionFactory);
 
-        new MetadataSources(serviceRegistry)
-                .addAnnotatedClass(Audit.class)
-                .buildMetadata();
-
-        var tableListener = new AuditTableListener();
-
-        var service = serviceRegistry.getService(EventListenerRegistry.class);
-        service.appendListeners(EventType.PRE_INSERT, tableListener);
-        service.appendListeners(EventType.PRE_DELETE, tableListener);
-
-        return configuration.buildSessionFactory();
+        return sessionFactory;
     }
 
     public static Configuration buildConfiguration() {
