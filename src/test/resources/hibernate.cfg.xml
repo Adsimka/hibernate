@@ -23,6 +23,8 @@
         <mapping class="entity.Payment"/>
         <mapping class="entity.AuditableEntity"/>
         <mapping class="entity.Audit"/>
+        <mapping class="entity.Revision"/>
+
 
 
     </session-factory>

@@ -2,6 +2,7 @@ package util;
 
 import converter.BirthDateConverter;
 import entity.Audit;
+import entity.Revision;
 import entity.User;
 import listener.AuditTableListener;
 import lombok.experimental.UtilityClass;
