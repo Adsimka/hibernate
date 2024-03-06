@@ -3,15 +3,7 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.51">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <Grants>1||-9223372036854775808|c|G
-1||10|c|G
-1||10|C|G
-1||10|T|G
-4||-9223372036854775808|c|G
-4||10|c|G
-4||10|C|G
-4||10|T|G</Grants>
-      <IntrospectionStateNumber>2706</IntrospectionStateNumber>
+      <IntrospectionStateNumber>2924</IntrospectionStateNumber>
       <ServerVersion>16.1</ServerVersion>
       <StartupTime>1709741534</StartupTime>
       <TimeZones>true ACDT
@@ -1408,7 +1400,7 @@ false posixrules
 13212||10|C|G
 13212||-9223372036854775808|U|G
 13212||10|U|G</Grants>
-      <IntrospectionStateNumber>2706</IntrospectionStateNumber>
+      <IntrospectionStateNumber>2924</IntrospectionStateNumber>
       <ObjectId>5</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -4827,315 +4819,335 @@ false posixrules
     <schema id="263" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>2706</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2024-03-06.17:54:43</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>2924</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2024-03-06.18:11:08</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>524</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
     </schema>
     <sequence id="264" parent="263" name="audit_id_seq">
       <DasType>bigint|0s</DasType>
-      <ObjectId>27213</ObjectId>
+      <ObjectId>27810</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>2691</StateNumber>
+      <StateNumber>2905</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="265" parent="263" name="chat_id_seq">
       <DasType>bigint|0s</DasType>
-      <ObjectId>27223</ObjectId>
+      <ObjectId>27820</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>2692</StateNumber>
+      <StateNumber>2906</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="266" parent="263" name="companies_id_seq">
       <DasType>integer|0s</DasType>
-      <ObjectId>27232</ObjectId>
+      <ObjectId>27829</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>2693</StateNumber>
+      <StateNumber>2907</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="267" parent="263" name="payment_id_seq">
       <DasType>bigint|0s</DasType>
-      <ObjectId>27248</ObjectId>
+      <ObjectId>27845</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>2695</StateNumber>
+      <StateNumber>2909</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="268" parent="263" name="profile_id_seq">
       <DasType>bigint|0s</DasType>
-      <ObjectId>27257</ObjectId>
+      <ObjectId>27859</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>2696</StateNumber>
+      <StateNumber>2911</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <sequence id="269" parent="263" name="users_chat_id_seq">
+    <sequence id="269" parent="263" name="revinfo_seq">
       <DasType>bigint|0s</DasType>
-      <ObjectId>27280</ObjectId>
-      <SequenceIdentity>1</SequenceIdentity>
+      <ObjectId>27809</ObjectId>
+      <SequenceIdentity>1+50</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>2698</StateNumber>
+      <StateNumber>2904</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <sequence id="270" parent="263" name="users_id_seq">
+    <sequence id="270" parent="263" name="users_chat_id_seq">
       <DasType>bigint|0s</DasType>
-      <ObjectId>27268</ObjectId>
+      <ObjectId>27887</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>2697</StateNumber>
+      <StateNumber>2914</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <table id="271" parent="263" name="audit">
-      <ObjectId>27214</ObjectId>
-      <StateNumber>2691</StateNumber>
+    <sequence id="271" parent="263" name="users_id_seq">
+      <DasType>bigint|0s</DasType>
+      <ObjectId>27875</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>2913</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <table id="272" parent="263" name="audit">
+      <ObjectId>27811</ObjectId>
+      <StateNumber>2905</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="272" parent="263" name="chat">
-      <ObjectId>27224</ObjectId>
-      <StateNumber>2703</StateNumber>
+    <table id="273" parent="263" name="chat">
+      <ObjectId>27821</ObjectId>
+      <StateNumber>2920</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="273" parent="263" name="companies">
-      <ObjectId>27233</ObjectId>
-      <StateNumber>2699</StateNumber>
+    <table id="274" parent="263" name="companies">
+      <ObjectId>27830</ObjectId>
+      <StateNumber>2915</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="274" parent="263" name="company_locale">
-      <ObjectId>27241</ObjectId>
-      <StateNumber>2699</StateNumber>
+    <table id="275" parent="263" name="company_locale">
+      <ObjectId>27838</ObjectId>
+      <StateNumber>2915</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="275" parent="263" name="manager">
+    <table id="276" parent="263" name="manager">
       <ObjectId>25344</ObjectId>
       <StateNumber>2048</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="276" parent="263" name="payment">
-      <ObjectId>27249</ObjectId>
-      <StateNumber>2700</StateNumber>
+    <table id="277" parent="263" name="payment">
+      <ObjectId>27846</ObjectId>
+      <StateNumber>2916</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="277" parent="263" name="profile">
-      <ObjectId>27258</ObjectId>
-      <StateNumber>2701</StateNumber>
+    <table id="278" parent="263" name="payment_aud">
+      <ObjectId>27854</ObjectId>
+      <StateNumber>2917</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="278" parent="263" name="programmer">
+    <table id="279" parent="263" name="profile">
+      <ObjectId>27860</ObjectId>
+      <StateNumber>2918</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="280" parent="263" name="programmer">
       <ObjectId>25367</ObjectId>
       <StateNumber>2051</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="279" parent="263" name="users">
-      <ObjectId>27269</ObjectId>
-      <StateNumber>2700</StateNumber>
+    <table id="281" parent="263" name="revinfo">
+      <ObjectId>27870</ObjectId>
+      <StateNumber>2917</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="280" parent="263" name="users_chat">
-      <ObjectId>27281</ObjectId>
-      <StateNumber>2703</StateNumber>
+    <table id="282" parent="263" name="users">
+      <ObjectId>27876</ObjectId>
+      <StateNumber>2916</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <check id="281" parent="271" name="audit_operation_check">
+    <table id="283" parent="263" name="users_chat">
+      <ObjectId>27888</ObjectId>
+      <StateNumber>2920</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <check id="284" parent="272" name="audit_operation_check">
       <ColNames>operation</ColNames>
-      <ObjectId>27218</ObjectId>
+      <ObjectId>27815</ObjectId>
       <Predicate>(operation)::text = ANY ((ARRAY[&apos;SAVE&apos;::character varying, &apos;DELETE&apos;::character varying, &apos;UPDATE&apos;::character varying, &apos;READ&apos;::character varying])::text[])</Predicate>
-      <StateNumber>2691</StateNumber>
+      <StateNumber>2905</StateNumber>
     </check>
-    <column id="282" parent="271" name="id">
+    <column id="285" parent="272" name="id">
       <DasType>bigint|0s</DasType>
       <DefaultExpression>nextval(&apos;audit_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>2691</StateNumber>
-      <SequenceId>27213</SequenceId>
+      <StateNumber>2905</StateNumber>
+      <SequenceId>27810</SequenceId>
       <TypeId>20</TypeId>
     </column>
-    <column id="283" parent="271" name="entitycontent">
+    <column id="286" parent="272" name="entitycontent">
       <DasType>varchar(255)|0s</DasType>
       <Position>2</Position>
-      <StateNumber>2691</StateNumber>
+      <StateNumber>2905</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="284" parent="271" name="entityname">
+    <column id="287" parent="272" name="entityname">
       <DasType>varchar(255)|0s</DasType>
       <Position>3</Position>
-      <StateNumber>2691</StateNumber>
+      <StateNumber>2905</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="285" parent="271" name="operation">
+    <column id="288" parent="272" name="operation">
       <DasType>varchar(255)|0s</DasType>
       <Position>4</Position>
-      <StateNumber>2691</StateNumber>
+      <StateNumber>2905</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="286" parent="271" name="audit_pkey">
+    <index id="289" parent="272" name="audit_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>27221</ObjectId>
+      <ObjectId>27818</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>2691</StateNumber>
+      <StateNumber>2905</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="287" parent="271" name="audit_pkey">
+    <key id="290" parent="272" name="audit_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>27222</ObjectId>
+      <ObjectId>27819</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>2691</StateNumber>
-      <UnderlyingIndexId>27221</UnderlyingIndexId>
+      <StateNumber>2905</StateNumber>
+      <UnderlyingIndexId>27818</UnderlyingIndexId>
     </key>
-    <column id="288" parent="272" name="count">
+    <column id="291" parent="273" name="count">
       <DasType>bigint|0s</DasType>
       <Position>1</Position>
-      <StateNumber>2692</StateNumber>
+      <StateNumber>2906</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="289" parent="272" name="id">
+    <column id="292" parent="273" name="id">
       <DasType>bigint|0s</DasType>
       <DefaultExpression>nextval(&apos;chat_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>2692</StateNumber>
-      <SequenceId>27223</SequenceId>
+      <StateNumber>2906</StateNumber>
+      <SequenceId>27820</SequenceId>
       <TypeId>20</TypeId>
     </column>
-    <column id="290" parent="272" name="name">
+    <column id="293" parent="273" name="name">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>2692</StateNumber>
+      <StateNumber>2906</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="291" parent="272" name="chat_pkey">
+    <index id="294" parent="273" name="chat_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>27228</ObjectId>
+      <ObjectId>27825</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>2692</StateNumber>
+      <StateNumber>2906</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="292" parent="272" name="chat_name_key">
+    <index id="295" parent="273" name="chat_name_key">
       <ColNames>name</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>27230</ObjectId>
-      <StateNumber>2692</StateNumber>
+      <ObjectId>27827</ObjectId>
+      <StateNumber>2906</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
       <CollationNames>default</CollationNames>
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <key id="293" parent="272" name="chat_pkey">
+    <key id="296" parent="273" name="chat_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>27229</ObjectId>
+      <ObjectId>27826</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>2692</StateNumber>
-      <UnderlyingIndexId>27228</UnderlyingIndexId>
+      <StateNumber>2906</StateNumber>
+      <UnderlyingIndexId>27825</UnderlyingIndexId>
     </key>
-    <key id="294" parent="272" name="chat_name_key">
+    <key id="297" parent="273" name="chat_name_key">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>27231</ObjectId>
-      <StateNumber>2692</StateNumber>
-      <UnderlyingIndexId>27230</UnderlyingIndexId>
+      <ObjectId>27828</ObjectId>
+      <StateNumber>2906</StateNumber>
+      <UnderlyingIndexId>27827</UnderlyingIndexId>
     </key>
-    <column id="295" parent="273" name="id">
+    <column id="298" parent="274" name="id">
       <DasType>integer|0s</DasType>
       <DefaultExpression>nextval(&apos;companies_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>2693</StateNumber>
-      <SequenceId>27232</SequenceId>
+      <StateNumber>2907</StateNumber>
+      <SequenceId>27829</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="296" parent="273" name="name">
+    <column id="299" parent="274" name="name">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>2693</StateNumber>
+      <StateNumber>2907</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="297" parent="273" name="companies_pkey">
+    <index id="300" parent="274" name="companies_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>27237</ObjectId>
+      <ObjectId>27834</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>2693</StateNumber>
+      <StateNumber>2907</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="298" parent="273" name="companies_name_key">
+    <index id="301" parent="274" name="companies_name_key">
       <ColNames>name</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>27239</ObjectId>
-      <StateNumber>2693</StateNumber>
+      <ObjectId>27836</ObjectId>
+      <StateNumber>2907</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
       <CollationNames>default</CollationNames>
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <key id="299" parent="273" name="companies_pkey">
+    <key id="302" parent="274" name="companies_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>27238</ObjectId>
+      <ObjectId>27835</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>2693</StateNumber>
-      <UnderlyingIndexId>27237</UnderlyingIndexId>
+      <StateNumber>2907</StateNumber>
+      <UnderlyingIndexId>27834</UnderlyingIndexId>
     </key>
-    <key id="300" parent="273" name="companies_name_key">
+    <key id="303" parent="274" name="companies_name_key">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>27240</ObjectId>
-      <StateNumber>2693</StateNumber>
-      <UnderlyingIndexId>27239</UnderlyingIndexId>
+      <ObjectId>27837</ObjectId>
+      <StateNumber>2907</StateNumber>
+      <UnderlyingIndexId>27836</UnderlyingIndexId>
     </key>
-    <column id="301" parent="274" name="company_id">
+    <column id="304" parent="275" name="company_id">
       <DasType>integer|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>2694</StateNumber>
+      <StateNumber>2908</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="302" parent="274" name="description">
+    <column id="305" parent="275" name="description">
       <DasType>varchar(255)|0s</DasType>
       <Position>2</Position>
-      <StateNumber>2694</StateNumber>
+      <StateNumber>2908</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="303" parent="274" name="lang">
+    <column id="306" parent="275" name="lang">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>2694</StateNumber>
+      <StateNumber>2908</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <foreign-key id="304" parent="274" name="fk9l5yetajhikfd8r2artuxxbqu">
+    <foreign-key id="307" parent="275" name="fk9l5yetajhikfd8r2artuxxbqu">
       <ColNames>company_id</ColNames>
-      <ObjectId>27289</ObjectId>
-      <StateNumber>2699</StateNumber>
+      <ObjectId>27896</ObjectId>
+      <StateNumber>2915</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>27233</RefTableId>
+      <RefTableId>27830</RefTableId>
     </foreign-key>
-    <index id="305" parent="274" name="company_locale_pkey">
+    <index id="308" parent="275" name="company_locale_pkey">
       <ColNames>company_id
 lang</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>27246</ObjectId>
+      <ObjectId>27843</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>2694</StateNumber>
+      <StateNumber>2908</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
       <CollationIds>
@@ -5145,27 +5157,27 @@ pg_catalog</CollationParentNames>
       <CollationNames>
 default</CollationNames>
     </index>
-    <key id="306" parent="274" name="company_locale_pkey">
+    <key id="309" parent="275" name="company_locale_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>27247</ObjectId>
+      <ObjectId>27844</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>2694</StateNumber>
-      <UnderlyingIndexId>27246</UnderlyingIndexId>
+      <StateNumber>2908</StateNumber>
+      <UnderlyingIndexId>27843</UnderlyingIndexId>
     </key>
-    <column id="307" parent="275" name="id">
+    <column id="310" parent="276" name="id">
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>2041</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="308" parent="275" name="projectname">
+    <column id="311" parent="276" name="projectname">
       <DasType>varchar(255)|0s</DasType>
       <Position>2</Position>
       <StateNumber>2041</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="309" parent="275" name="manager_pkey">
+    <index id="312" parent="276" name="manager_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>25347</ObjectId>
@@ -5174,167 +5186,223 @@ default</CollationNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="310" parent="275" name="manager_pkey">
+    <key id="313" parent="276" name="manager_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>25348</ObjectId>
       <Primary>1</Primary>
       <StateNumber>2041</StateNumber>
       <UnderlyingIndexId>25347</UnderlyingIndexId>
     </key>
-    <column id="311" parent="276" name="amount">
+    <column id="314" parent="277" name="amount">
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>2695</StateNumber>
+      <StateNumber>2909</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="312" parent="276" name="createdtime">
+    <column id="315" parent="277" name="createdtime">
       <DasType>timestamp(6)|0s</DasType>
       <Position>2</Position>
-      <StateNumber>2695</StateNumber>
+      <StateNumber>2909</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="313" parent="276" name="id">
+    <column id="316" parent="277" name="id">
       <DasType>bigint|0s</DasType>
       <DefaultExpression>nextval(&apos;payment_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>2695</StateNumber>
-      <SequenceId>27248</SequenceId>
+      <StateNumber>2909</StateNumber>
+      <SequenceId>27845</SequenceId>
       <TypeId>20</TypeId>
     </column>
-    <column id="314" parent="276" name="receiver_id">
+    <column id="317" parent="277" name="receiver_id">
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
-      <StateNumber>2695</StateNumber>
+      <StateNumber>2909</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="315" parent="276" name="updatetime">
+    <column id="318" parent="277" name="updatetime">
       <DasType>timestamp(6)|0s</DasType>
       <Position>5</Position>
-      <StateNumber>2695</StateNumber>
+      <StateNumber>2909</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="316" parent="276" name="createdby">
+    <column id="319" parent="277" name="createdby">
       <DasType>varchar(255)|0s</DasType>
       <Position>6</Position>
-      <StateNumber>2695</StateNumber>
+      <StateNumber>2909</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="317" parent="276" name="updateby">
+    <column id="320" parent="277" name="updateby">
       <DasType>varchar(255)|0s</DasType>
       <Position>7</Position>
-      <StateNumber>2695</StateNumber>
+      <StateNumber>2909</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <foreign-key id="318" parent="276" name="fk6ekr1r2boj1fg6vt57y4a54al">
+    <foreign-key id="321" parent="277" name="fk6ekr1r2boj1fg6vt57y4a54al">
       <ColNames>receiver_id</ColNames>
-      <ObjectId>27294</ObjectId>
-      <StateNumber>2700</StateNumber>
+      <ObjectId>27901</ObjectId>
+      <StateNumber>2916</StateNumber>
       <RefKeyColPositions>3</RefKeyColPositions>
-      <RefTableId>27269</RefTableId>
+      <RefTableId>27876</RefTableId>
     </foreign-key>
-    <index id="319" parent="276" name="payment_pkey">
+    <index id="322" parent="277" name="payment_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>27255</ObjectId>
+      <ObjectId>27852</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>2695</StateNumber>
+      <StateNumber>2909</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="320" parent="276" name="payment_pkey">
+    <key id="323" parent="277" name="payment_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>27256</ObjectId>
+      <ObjectId>27853</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>2695</StateNumber>
-      <UnderlyingIndexId>27255</UnderlyingIndexId>
+      <StateNumber>2909</StateNumber>
+      <UnderlyingIndexId>27852</UnderlyingIndexId>
     </key>
-    <column id="321" parent="277" name="id">
+    <column id="324" parent="278" name="rev">
+      <DasType>integer|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>2910</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="325" parent="278" name="revtype">
+      <DasType>smallint|0s</DasType>
+      <Position>2</Position>
+      <StateNumber>2910</StateNumber>
+      <TypeId>21</TypeId>
+    </column>
+    <column id="326" parent="278" name="amount">
+      <DasType>bigint|0s</DasType>
+      <Position>3</Position>
+      <StateNumber>2910</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="327" parent="278" name="id">
+      <DasType>bigint|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StateNumber>2910</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="328" parent="278" name="receiver_id">
+      <DasType>bigint|0s</DasType>
+      <Position>5</Position>
+      <StateNumber>2910</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <foreign-key id="329" parent="278" name="fkri7jygy418q9lo8l10jltdln">
+      <ColNames>rev</ColNames>
+      <ObjectId>27906</ObjectId>
+      <StateNumber>2917</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>27870</RefTableId>
+    </foreign-key>
+    <index id="330" parent="278" name="payment_aud_pkey">
+      <ColNames>rev
+id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>27857</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>2910</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="331" parent="278" name="payment_aud_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>27858</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>2910</StateNumber>
+      <UnderlyingIndexId>27857</UnderlyingIndexId>
+    </key>
+    <column id="332" parent="279" name="id">
       <DasType>bigint|0s</DasType>
       <DefaultExpression>nextval(&apos;profile_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>2696</StateNumber>
-      <SequenceId>27257</SequenceId>
+      <StateNumber>2911</StateNumber>
+      <SequenceId>27859</SequenceId>
       <TypeId>20</TypeId>
     </column>
-    <column id="322" parent="277" name="user_id">
+    <column id="333" parent="279" name="user_id">
       <DasType>bigint|0s</DasType>
       <Position>2</Position>
-      <StateNumber>2696</StateNumber>
+      <StateNumber>2911</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="323" parent="277" name="language">
+    <column id="334" parent="279" name="language">
       <DasType>varchar(255)|0s</DasType>
       <Position>3</Position>
-      <StateNumber>2696</StateNumber>
+      <StateNumber>2911</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="324" parent="277" name="street">
+    <column id="335" parent="279" name="street">
       <DasType>varchar(255)|0s</DasType>
       <Position>4</Position>
-      <StateNumber>2696</StateNumber>
+      <StateNumber>2911</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <foreign-key id="325" parent="277" name="fk1da3iuv2pgbruhtujylkbmv14">
+    <foreign-key id="336" parent="279" name="fk1da3iuv2pgbruhtujylkbmv14">
       <ColNames>user_id</ColNames>
-      <ObjectId>27299</ObjectId>
-      <StateNumber>2701</StateNumber>
+      <ObjectId>27911</ObjectId>
+      <StateNumber>2918</StateNumber>
       <RefKeyColPositions>3</RefKeyColPositions>
-      <RefTableId>27269</RefTableId>
+      <RefTableId>27876</RefTableId>
     </foreign-key>
-    <index id="326" parent="277" name="profile_pkey">
+    <index id="337" parent="279" name="profile_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>27264</ObjectId>
+      <ObjectId>27866</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>2696</StateNumber>
+      <StateNumber>2911</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="327" parent="277" name="profile_user_id_key">
+    <index id="338" parent="279" name="profile_user_id_key">
       <ColNames>user_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>27266</ObjectId>
-      <StateNumber>2696</StateNumber>
+      <ObjectId>27868</ObjectId>
+      <StateNumber>2911</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="328" parent="277" name="profile_pkey">
+    <key id="339" parent="279" name="profile_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>27265</ObjectId>
+      <ObjectId>27867</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>2696</StateNumber>
-      <UnderlyingIndexId>27264</UnderlyingIndexId>
+      <StateNumber>2911</StateNumber>
+      <UnderlyingIndexId>27866</UnderlyingIndexId>
     </key>
-    <key id="329" parent="277" name="profile_user_id_key">
+    <key id="340" parent="279" name="profile_user_id_key">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>27267</ObjectId>
-      <StateNumber>2696</StateNumber>
-      <UnderlyingIndexId>27266</UnderlyingIndexId>
+      <ObjectId>27869</ObjectId>
+      <StateNumber>2911</StateNumber>
+      <UnderlyingIndexId>27868</UnderlyingIndexId>
     </key>
-    <check id="330" parent="278" name="programmer_language_check">
+    <check id="341" parent="280" name="programmer_language_check">
       <ColNames>language</ColNames>
       <ObjectId>25370</ObjectId>
       <Predicate>(language)::text = ANY ((ARRAY[&apos;JAVA&apos;::character varying, &apos;C&apos;::character varying, &apos;RUBY&apos;::character varying])::text[])</Predicate>
       <StateNumber>2044</StateNumber>
     </check>
-    <column id="331" parent="278" name="id">
+    <column id="342" parent="280" name="id">
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>2044</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="332" parent="278" name="language">
+    <column id="343" parent="280" name="language">
       <DasType>varchar(255)|0s</DasType>
       <Position>2</Position>
       <StateNumber>2044</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="333" parent="278" name="programmer_pkey">
+    <index id="344" parent="280" name="programmer_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>25371</ObjectId>
@@ -5343,178 +5411,207 @@ default</CollationNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="334" parent="278" name="programmer_pkey">
+    <key id="345" parent="280" name="programmer_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>25372</ObjectId>
       <Primary>1</Primary>
       <StateNumber>2044</StateNumber>
       <UnderlyingIndexId>25371</UnderlyingIndexId>
     </key>
-    <check id="335" parent="279" name="users_role_check">
-      <ColNames>role</ColNames>
-      <ObjectId>27273</ObjectId>
-      <Predicate>(role)::text = ANY ((ARRAY[&apos;USER&apos;::character varying, &apos;ADMIN&apos;::character varying])::text[])</Predicate>
-      <StateNumber>2697</StateNumber>
-    </check>
-    <column id="336" parent="279" name="birth_day">
-      <DasType>date|0s</DasType>
-      <Position>1</Position>
-      <StateNumber>2697</StateNumber>
-      <TypeId>1082</TypeId>
-    </column>
-    <column id="337" parent="279" name="company_id">
+    <column id="346" parent="281" name="rev">
       <DasType>integer|0s</DasType>
-      <Position>2</Position>
-      <StateNumber>2697</StateNumber>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>2912</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="338" parent="279" name="id">
+    <column id="347" parent="281" name="revtstmp">
+      <DasType>bigint|0s</DasType>
+      <Position>2</Position>
+      <StateNumber>2912</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <index id="348" parent="281" name="revinfo_pkey">
+      <ColNames>rev</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>27873</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>2912</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="349" parent="281" name="revinfo_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>27874</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>2912</StateNumber>
+      <UnderlyingIndexId>27873</UnderlyingIndexId>
+    </key>
+    <check id="350" parent="282" name="users_role_check">
+      <ColNames>role</ColNames>
+      <ObjectId>27880</ObjectId>
+      <Predicate>(role)::text = ANY ((ARRAY[&apos;USER&apos;::character varying, &apos;ADMIN&apos;::character varying])::text[])</Predicate>
+      <StateNumber>2913</StateNumber>
+    </check>
+    <column id="351" parent="282" name="birth_day">
+      <DasType>date|0s</DasType>
+      <Position>1</Position>
+      <StateNumber>2913</StateNumber>
+      <TypeId>1082</TypeId>
+    </column>
+    <column id="352" parent="282" name="company_id">
+      <DasType>integer|0s</DasType>
+      <Position>2</Position>
+      <StateNumber>2913</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="353" parent="282" name="id">
       <DasType>bigint|0s</DasType>
       <DefaultExpression>nextval(&apos;users_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>2697</StateNumber>
-      <SequenceId>27268</SequenceId>
+      <StateNumber>2913</StateNumber>
+      <SequenceId>27875</SequenceId>
       <TypeId>20</TypeId>
     </column>
-    <column id="339" parent="279" name="firstname">
+    <column id="354" parent="282" name="firstname">
       <DasType>varchar(255)|0s</DasType>
       <Position>4</Position>
-      <StateNumber>2697</StateNumber>
+      <StateNumber>2913</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="340" parent="279" name="lastname">
+    <column id="355" parent="282" name="lastname">
       <DasType>varchar(255)|0s</DasType>
       <Position>5</Position>
-      <StateNumber>2697</StateNumber>
+      <StateNumber>2913</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="341" parent="279" name="role">
+    <column id="356" parent="282" name="role">
       <DasType>varchar(255)|0s</DasType>
       <Position>6</Position>
-      <StateNumber>2697</StateNumber>
+      <StateNumber>2913</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="342" parent="279" name="username">
+    <column id="357" parent="282" name="username">
       <DasType>varchar(255)|0s</DasType>
       <Position>7</Position>
-      <StateNumber>2697</StateNumber>
+      <StateNumber>2913</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <foreign-key id="343" parent="279" name="fkin8gn4o1hpiwe6qe4ey7ykwq7">
+    <foreign-key id="358" parent="282" name="fkin8gn4o1hpiwe6qe4ey7ykwq7">
       <ColNames>company_id</ColNames>
-      <ObjectId>27304</ObjectId>
-      <StateNumber>2702</StateNumber>
+      <ObjectId>27916</ObjectId>
+      <StateNumber>2919</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>27233</RefTableId>
+      <RefTableId>27830</RefTableId>
     </foreign-key>
-    <index id="344" parent="279" name="users_pkey">
+    <index id="359" parent="282" name="users_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>27276</ObjectId>
+      <ObjectId>27883</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>2697</StateNumber>
+      <StateNumber>2913</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="345" parent="279" name="users_username_key">
+    <index id="360" parent="282" name="users_username_key">
       <ColNames>username</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>27278</ObjectId>
-      <StateNumber>2697</StateNumber>
+      <ObjectId>27885</ObjectId>
+      <StateNumber>2913</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
       <CollationNames>default</CollationNames>
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <key id="346" parent="279" name="users_pkey">
+    <key id="361" parent="282" name="users_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>27277</ObjectId>
+      <ObjectId>27884</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>2697</StateNumber>
-      <UnderlyingIndexId>27276</UnderlyingIndexId>
+      <StateNumber>2913</StateNumber>
+      <UnderlyingIndexId>27883</UnderlyingIndexId>
     </key>
-    <key id="347" parent="279" name="users_username_key">
+    <key id="362" parent="282" name="users_username_key">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>27279</ObjectId>
-      <StateNumber>2697</StateNumber>
-      <UnderlyingIndexId>27278</UnderlyingIndexId>
+      <ObjectId>27886</ObjectId>
+      <StateNumber>2913</StateNumber>
+      <UnderlyingIndexId>27885</UnderlyingIndexId>
     </key>
-    <column id="348" parent="280" name="chat_id">
+    <column id="363" parent="283" name="chat_id">
       <DasType>bigint|0s</DasType>
       <Position>1</Position>
-      <StateNumber>2698</StateNumber>
+      <StateNumber>2914</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="349" parent="280" name="createdtime">
+    <column id="364" parent="283" name="createdtime">
       <DasType>timestamp(6)|0s</DasType>
       <Position>2</Position>
-      <StateNumber>2698</StateNumber>
+      <StateNumber>2914</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="350" parent="280" name="id">
+    <column id="365" parent="283" name="id">
       <DasType>bigint|0s</DasType>
       <DefaultExpression>nextval(&apos;users_chat_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>2698</StateNumber>
-      <SequenceId>27280</SequenceId>
+      <StateNumber>2914</StateNumber>
+      <SequenceId>27887</SequenceId>
       <TypeId>20</TypeId>
     </column>
-    <column id="351" parent="280" name="updatetime">
+    <column id="366" parent="283" name="updatetime">
       <DasType>timestamp(6)|0s</DasType>
       <Position>4</Position>
-      <StateNumber>2698</StateNumber>
+      <StateNumber>2914</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="352" parent="280" name="user_id">
+    <column id="367" parent="283" name="user_id">
       <DasType>bigint|0s</DasType>
       <Position>5</Position>
-      <StateNumber>2698</StateNumber>
+      <StateNumber>2914</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="353" parent="280" name="createdby">
+    <column id="368" parent="283" name="createdby">
       <DasType>varchar(255)|0s</DasType>
       <Position>6</Position>
-      <StateNumber>2698</StateNumber>
+      <StateNumber>2914</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="354" parent="280" name="updateby">
+    <column id="369" parent="283" name="updateby">
       <DasType>varchar(255)|0s</DasType>
       <Position>7</Position>
-      <StateNumber>2698</StateNumber>
+      <StateNumber>2914</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <foreign-key id="355" parent="280" name="fkbb4c9x6p03jde5nn6ku29g1h8">
+    <foreign-key id="370" parent="283" name="fkbb4c9x6p03jde5nn6ku29g1h8">
       <ColNames>chat_id</ColNames>
-      <ObjectId>27309</ObjectId>
-      <StateNumber>2703</StateNumber>
+      <ObjectId>27921</ObjectId>
+      <StateNumber>2920</StateNumber>
       <RefKeyColPositions>2</RefKeyColPositions>
-      <RefTableId>27224</RefTableId>
+      <RefTableId>27821</RefTableId>
     </foreign-key>
-    <foreign-key id="356" parent="280" name="fk4n5ew9rhowx26b46nwirrcfdi">
+    <foreign-key id="371" parent="283" name="fk4n5ew9rhowx26b46nwirrcfdi">
       <ColNames>user_id</ColNames>
-      <ObjectId>27314</ObjectId>
-      <StateNumber>2704</StateNumber>
+      <ObjectId>27926</ObjectId>
+      <StateNumber>2921</StateNumber>
       <RefKeyColPositions>3</RefKeyColPositions>
-      <RefTableId>27269</RefTableId>
+      <RefTableId>27876</RefTableId>
     </foreign-key>
-    <index id="357" parent="280" name="users_chat_pkey">
+    <index id="372" parent="283" name="users_chat_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>27287</ObjectId>
+      <ObjectId>27894</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>2698</StateNumber>
+      <StateNumber>2914</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="358" parent="280" name="users_chat_pkey">
+    <key id="373" parent="283" name="users_chat_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>27288</ObjectId>
+      <ObjectId>27895</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>2698</StateNumber>
-      <UnderlyingIndexId>27287</UnderlyingIndexId>
+      <StateNumber>2914</StateNumber>
+      <UnderlyingIndexId>27894</UnderlyingIndexId>
     </key>
   </database-model>
 </dataSource>

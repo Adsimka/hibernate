@@ -2,6 +2,9 @@ package entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.envers.Audited;
+
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
 
 @Entity
 @Data
@@ -11,6 +14,7 @@ import lombok.*;
 @EqualsAndHashCode(callSuper=false)
 //@OptimisticLocking(type = OptimisticLockType.VERSION)
 //@DynamicUpdate
+@Audited(targetAuditMode = NOT_AUDITED)
 public class Payment extends AuditableEntity<Long> {
 
     @Id
