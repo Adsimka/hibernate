@@ -1,16 +1,20 @@
 package entity;
 
 import jakarta.persistence.*;
+import listener.UserChatListener;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
 
 @Data
+@EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "users_chat")
-@EqualsAndHashCode(exclude = "user", callSuper=false)
+@EntityListeners(UserChatListener.class)
 public class UsersChat extends AuditableEntity<Long> {
 
     @Id
@@ -19,11 +23,18 @@ public class UsersChat extends AuditableEntity<Long> {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
+
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "chat_id")
     private Chat chat;
 
     public void setUser(User user) {
         this.user = user;
         this.user.getUsersChats().add(this);
+    }
+
+    public void setChat(Chat chat) {
+        this.chat = chat;
+        this.chat.getUsersChats().add(this);
     }
 }

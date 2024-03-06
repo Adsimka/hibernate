@@ -2,7 +2,12 @@ import domain.BirthDate;
 import domain.Role;
 import entity.*;
 import jakarta.persistence.LockModeType;
+import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import util.HibernateUtil;
+import util.TestDataImporter;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -11,15 +16,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-
+@Slf4j
 public class HibernateRunner {
+    @Transactional
     public static void main(String[] args) throws SQLException {
-        try(var sessionFactory = HibernateUtil.buildSessionFactory();
-            var session = sessionFactory.openSession()) {
+        try (SessionFactory sessionFactory = HibernateUtil.buildSessionFactory();
+             Session session = sessionFactory.openSession()) {
+            TestDataImporter.importData(sessionFactory);
             session.beginTransaction();
 
-            User user = session.get(User.class, 1L);
-            session.remove(user);
+            var payment = session.find(Payment.class, 1L);
+            payment.setAmount(payment.getAmount() + 10);
 
             session.getTransaction().commit();
         }

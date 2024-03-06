@@ -2,7 +2,6 @@ package entity;
 
 import domain.Role;
 import jakarta.persistence.*;
-import listener.AuditTableListener;
 import lombok.*;
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.FetchMode;
@@ -12,26 +11,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-@NamedEntityGraph(
-        name = "withCompanyAndChat",
-        attributeNodes = {
-                @NamedAttributeNode(value = "company"),
-                @NamedAttributeNode(value = "usersChats", subgraph = "chats")
-        },
-        subgraphs = {
-                @NamedSubgraph(
-                        name = "chats",
-                        attributeNodes = @NamedAttributeNode("chat"))
-        }
-)
-@FetchProfile(name = "withCompanyAndPayments", fetchOverrides = {
-        @FetchProfile.FetchOverride(
-                entity = User.class, association = "company", mode = FetchMode.JOIN
-        ),
-        @FetchProfile.FetchOverride(
-                entity = User.class, association = "paymentList", mode = FetchMode.SUBSELECT
-        )
-})
+
 @NamedQuery(name = "findUserByName", query = "select u from User u join u.company c where u.username = :username and c.name = :companyName")
 @Data
 @NoArgsConstructor

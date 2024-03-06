@@ -22,10 +22,7 @@ public class HibernateUtil {
         Configuration configuration = buildConfiguration();
         configuration.configure();
 
-        var sessionFactory = configuration.buildSessionFactory();
-        registryListener(sessionFactory);
-
-        return sessionFactory;
+        return configuration.buildSessionFactory();
     }
 
     public static Configuration buildConfiguration() {
