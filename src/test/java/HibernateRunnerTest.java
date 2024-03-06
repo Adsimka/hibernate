@@ -16,6 +16,29 @@ import java.util.Map;
 class HibernateRunnerTest {
 
     @Test
+    void checkAuditTableListener() {
+        try(var sessionFactory = HibernateUtil.buildSessionFactory();
+            var session = sessionFactory.openSession()) {
+            session.beginTransaction();
+
+            Company company = Company.builder()
+                    .name("Hibernate")
+                    .build();
+
+            User user = User.builder()
+                    .username("sahalysyk01@mail.ru")
+                    .company(company)
+                    .build();
+
+            company.addUser(user);
+
+            session.save(company);
+            session.save(user);
+
+            session.getTransaction().commit();
+        }
+    }
+    @Test
     void checkEntityGraph() {
         try (var sessionFactory = HibernateUtil.buildSessionFactory();
              var session = sessionFactory.openSession()) {

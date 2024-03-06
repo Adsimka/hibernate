@@ -9,10 +9,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.event.service.internal.EventListenerRegistryImpl;
 import org.hibernate.event.service.spi.EventListenerRegistry;
 import org.hibernate.event.spi.EventType;
 import org.hibernate.internal.SessionFactoryImpl;
+
+import javax.persistence.AttributeConverter;
 
 @UtilityClass
 public class HibernateUtil {

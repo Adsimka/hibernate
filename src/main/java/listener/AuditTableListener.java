@@ -4,6 +4,7 @@ import entity.Audit;
 import entity.Audit.Operation;
 import org.hibernate.event.spi.*;
 
+
 public class AuditTableListener implements PreDeleteEventListener, PreInsertEventListener {
 
     @Override

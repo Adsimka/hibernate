@@ -24,6 +24,5 @@
         <mapping class="entity.AuditableEntity"/>
         <mapping class="entity.Audit"/>
 
-
     </session-factory>
 </hibernate-configuration>
