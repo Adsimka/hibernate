@@ -1,8 +1,13 @@
+import domain.Role;
 import entity.Payment;
+import entity.User;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.ReplicationMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.envers.AuditReader;
+import org.hibernate.envers.AuditReaderFactory;
 import util.HibernateUtil;
 import util.TestDataImporter;
 
@@ -14,11 +19,12 @@ public class HibernateRunner {
     public static void main(String[] args) throws SQLException {
         try (SessionFactory sessionFactory = HibernateUtil.buildSessionFactory();
              Session session = sessionFactory.openSession()) {
-            TestDataImporter.importData(sessionFactory);
             session.beginTransaction();
 
-            var payment = session.find(Payment.class, 1L);
-            payment.setAmount(payment.getAmount() + 10);
+            AuditReader auditReader = AuditReaderFactory.get(session);
+            User user = auditReader.find(User.class, 1L, 1L);
+
+            session.replicate(user, ReplicationMode.OVERWRITE);
 
             session.getTransaction().commit();
         }
