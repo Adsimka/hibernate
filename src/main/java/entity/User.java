@@ -4,8 +4,8 @@ import domain.Role;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.BatchSize;
-import org.hibernate.annotations.FetchMode;
-import org.hibernate.annotations.FetchProfile;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.NotAudited;
 
@@ -14,7 +14,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static org.hibernate.envers.RelationTargetAuditMode.AUDITED;
 import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
 
 @NamedQuery(name = "findUserByName", query = "select u from User u join u.company c where u.username = :username and c.name = :companyName")
@@ -29,7 +28,7 @@ import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
 @BatchSize(size = 3)
 @Builder
 @Audited(targetAuditMode = NOT_AUDITED)
-public class User implements Comparable<User> {
+public class User implements Comparable<User>, BaseEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
